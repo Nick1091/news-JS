@@ -1,9 +1,10 @@
 import AppLoader from './appLoader';
 import { IDataArticles } from './options';
 import { IDataSources } from './options';
+import { Callback } from './options';
 
 class AppController extends AppLoader {
-  getSources(callback: (data: IDataSources) => void) {
+  getSources(callback: Callback<IDataSources>) {
     super.getResp(
       {
         endpoint: 'sources',
@@ -12,7 +13,7 @@ class AppController extends AppLoader {
     );
   }
 
-  getNews(e: Event, callback: (data: IDataArticles) => void) {
+  getNews(e: Event, callback: Callback<IDataArticles>) {
     let target = <HTMLElement>e.target;
     const newsContainer = <HTMLElement>e.currentTarget;
     while (target !== newsContainer) {
