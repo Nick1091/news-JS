@@ -38,6 +38,11 @@ export type Callback<T> = (data: T) => void;
 export type Option = {
   [key: string]: string;
 };
+
+export enum ErrorCode {
+  unauthorized = 401,
+  notFound = 404,
+}
 // export interface IData {
 //   sources: DataSource[],
 //   articles: DataNews[]

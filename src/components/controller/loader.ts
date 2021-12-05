@@ -1,6 +1,7 @@
 import { ApiResponse } from './options';
 import { Callback } from './options';
 import { Option } from './options';
+import { ErrorCode } from './options';
 
 class Loader {
   baseLink: string;
@@ -13,7 +14,7 @@ class Loader {
   }
 
   getResp(
-    { endpoint = '', options = {} },
+    { endpoint, options }: { endpoint: string; options?: Record<string, string> },
     callback: Callback<ApiResponse> = () => {
       console.error('No callback for GET response');
     }
@@ -23,7 +24,7 @@ class Loader {
 
   errorHandler(res: Response) {
     if (!res.ok) {
-      if (res.status === 401 || res.status === 404)
+      if (res.status === ErrorCode.unauthorized || res.status === ErrorCode.notFound)
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
       throw Error(res.statusText);
     }
