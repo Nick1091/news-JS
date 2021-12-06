@@ -1,6 +1,5 @@
 export interface IDataResponse {
   status: 'ok' | null;
-  // totalResults?: number,
 }
 export interface IDataArticles extends IDataResponse {
   totalResults: number;
@@ -43,17 +42,3 @@ export enum ErrorCode {
   unauthorized = 401,
   notFound = 404,
 }
-// export interface IData {
-//   sources: DataSource[],
-//   articles: DataNews[]
-// }
-// export type CallbackType<T> = (data: T) => void
-
-// export type IDataEverythingResponse = {
-//   status: string,
-//   totalResult: number,
-//   articles: DataArticles,
-// }
-// export type Options ={
-//   [apiKey: string] : string,
-// }
