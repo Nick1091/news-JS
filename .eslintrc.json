@@ -21,8 +21,9 @@
         "prettier",
         "import",
         "@typescript-eslint"
-        ],
+    ],
     "rules": {
+        "eol-last": 2,
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/comma-dangle": "off",
         "no-debugger": "off",
@@ -38,6 +39,6 @@
                 "singleQuote": true,
                 "printWidth": 120
             }
-          ]
+        ]
     }
 }

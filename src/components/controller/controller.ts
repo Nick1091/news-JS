@@ -1,7 +1,5 @@
 import AppLoader from './appLoader';
-import { IDataArticles } from './options';
-import { IDataSources } from './options';
-import { Callback } from './options';
+import { IDataArticles, IDataSources, Callback } from '../types/types';
 
 class AppController extends AppLoader {
   getSources(callback: Callback<IDataSources>) {
@@ -14,11 +12,11 @@ class AppController extends AppLoader {
   }
 
   getNews(e: Event, callback: Callback<IDataArticles>) {
-    let target = <HTMLElement>e.target;
-    const newsContainer = <HTMLElement>e.currentTarget;
+    let target = e.target as HTMLElement;
+    const newsContainer = e.currentTarget as HTMLElement;
     while (target !== newsContainer) {
       if (target.classList.contains('source__item')) {
-        const sourceId = <string>target.getAttribute('data-source-id');
+        const sourceId: string = target.getAttribute('data-source-id');
         if (newsContainer.getAttribute('data-source') !== sourceId) {
           newsContainer.setAttribute('data-source', sourceId);
           super.getResp(
@@ -33,7 +31,7 @@ class AppController extends AppLoader {
         }
         return;
       }
-      target = <HTMLElement>target.parentNode;
+      target = target.parentNode as HTMLElement;
     }
   }
 }

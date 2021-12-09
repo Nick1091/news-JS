@@ -1,7 +1,6 @@
 import News from './news/news';
 import Sources from './sources/sources';
-import { IDataArticles } from '../controller/options';
-import { IDataSources } from '../controller/options';
+import { IDataArticles, IDataSources } from '../types/types';
 
 export class AppView {
   news: News;
@@ -14,13 +13,11 @@ export class AppView {
   }
 
   drawNews(data: IDataArticles) {
-    const values = data?.articles ? data?.articles : [];
-    this.news.draw(values);
+    this.news.draw(data.articles ? data.articles : []);
   }
 
   drawSources(data: IDataSources) {
-    const values = data?.sources ? data?.sources : [];
-    this.sources.draw(values);
+    this.sources.draw(data.sources ? data.sources : []);
   }
 }
 

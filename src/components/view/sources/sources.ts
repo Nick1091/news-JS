@@ -1,12 +1,12 @@
 import './sources.css';
 import './alphabet.css';
-import { DataSource } from '../../controller/options';
+import { DataSource } from '../../types/types';
 
 class Sources {
   draw(data: DataSource[]) {
     const fragment = <DocumentFragment>document.createDocumentFragment();
     const sourceItemTemp = <HTMLTemplateElement>document.querySelector('#sourceItemTemp');
-    const arr: string[] = Array(0);
+    const arr: string[] = [];
     data.forEach((item) => {
       arr.push(item.name.slice(0, 1));
       const sourceClone = <HTMLElement>sourceItemTemp.content.cloneNode(true);
@@ -18,10 +18,10 @@ class Sources {
     });
     const frag = <DocumentFragment>document.createDocumentFragment();
     const arrayNews = [...new Set(arr)];
-    arrayNews.forEach((i) => {
+    arrayNews.forEach((item) => {
       const alphabetClone = <HTMLElement>document.createElement('li');
       alphabetClone.classList.add('alphabet__item');
-      alphabetClone.textContent = i;
+      alphabetClone.textContent = item;
       frag.append(alphabetClone);
     });
     document.querySelector('.alphabet').append(frag);
@@ -30,14 +30,14 @@ class Sources {
     const setAlphabet = document.querySelectorAll('.alphabet__item');
     setAlphabet.forEach((button) => {
       button.addEventListener('click', () => {
-        const data1: DataSource[] = [];
+        const dataNew: DataSource[] = [];
         data.forEach((item) => {
           if (item.name.slice(0, 1) == button.textContent) {
             document.querySelector('.sources').innerHTML = '';
-            data1.push(item);
+            dataNew.push(item);
           }
         });
-        data1.forEach((item) => {
+        dataNew.forEach((item) => {
           arr.push(item.name.slice(0, 1));
           const sourceClone = <HTMLElement>sourceItemTemp.content.cloneNode(true);
 

@@ -1,23 +1,22 @@
 .sources {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    max-height: 55vh;
-    overflow: auto;
+    max-height: 280px;
+    overflow-y: auto;
     align-items: center;
     justify-content: center;
-    font: 300 1em 'Fira Sans', sans-serif;
+    font: 300 0.85em 'Fira Sans', sans-serif;
 }
 .sources::-webkit-scrollbar {
-    width: 14px; /* ширина для вертикального скролла */
-    height: 8px; /* высота для горизонтального скролла */
+    width: 10px;
+    height: 8px; 
     background-color: #143861;
     cursor: pointer;
     transition: all 0.5s ease-in-out;
     border-radius: 9em;
 }
 .sources::-webkit-scrollbar:hover {
-    height: 8px; /* высота для горизонтального скролла */
+    height: 8px;
 }
 .sources::-webkit-scrollbar-thumb {
     background-color: rgb(207, 0, 0);;
@@ -35,7 +34,7 @@
     border: 2px solid #30c5ff;
     border-radius: 5px;
     font: inherit;
-    line-height: 1;
+    line-height: 1em;
     margin: 0.5em;
     padding: 1em 2em;
     color: #70d6ff;
@@ -57,8 +56,12 @@
 }
 @media (min-width: 640px) {
     .sources {
-        padding-left: 0px;
-        max-height: 70vh;
+        max-height: 500px;
+        font-size: 1em;
     }
-
+}
+@media (min-width: 400px) {
+    .sources {
+        max-height: 400px;
+    }
 }

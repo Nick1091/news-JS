@@ -1,11 +1,21 @@
 const path = require('path');
-const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const baseConfig = {
+const devServer = (isDev) => !isDev ? {} : {
+    devServer: {
+      open: true,
+      hot: true,
+      port: 8080,
+      contentBase: path.join(__dirname, 'public'),
+    },
+  };
+
+module.exports = ({development}) => ({
+    mode : development ? 'development' : 'production',
     entry: path.resolve(__dirname, './src/index.ts'),
-    mode: 'development',
+    // mode: 'development',
+    devtool: development ? 'inline-source-map' : false,
     module: {
         rules: [
             {
@@ -46,11 +56,5 @@ const baseConfig = {
         }),
         new CleanWebpackPlugin(),
     ],
-};
-
-module.exports = ({ mode }) => {
-    const isProductionMode = mode === 'prod';
-    const envConfig = isProductionMode ? require('./webpack.prod.config') : require('./webpack.dev.config');
-
-    return merge(baseConfig, envConfig);
-};
+    ...devServer(development)
+});
