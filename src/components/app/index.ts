@@ -1,6 +1,6 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import Sources from '../view/sources/sources';
+import Sources from '../view/sources';
 
 class App {
   controller: AppController;

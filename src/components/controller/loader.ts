@@ -1,5 +1,5 @@
 import { ErrorCode } from './options';
-import { ApiResponse, Callback, Option } from '../types/types';
+import { ApiResponse, Callback, Option } from '../types';
 
 class Loader {
   baseLink: string;

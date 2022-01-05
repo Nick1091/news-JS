@@ -14,7 +14,6 @@ const devServer = (isDev) => !isDev ? {} : {
 module.exports = ({development}) => ({
     mode : development ? 'development' : 'production',
     entry: path.resolve(__dirname, './src/index.ts'),
-    // mode: 'development',
     devtool: development ? 'inline-source-map' : false,
     module: {
         rules: [

@@ -1,25 +1,28 @@
 import './sources.css';
 import './alphabet.css';
-import { DataSource } from '../../types/types';
+import { DataSource } from '../../types';
 
 class Sources {
   draw(data: DataSource[]) {
-    const fragment = <DocumentFragment>document.createDocumentFragment();
-    const sourceItemTemp = <HTMLTemplateElement>document.querySelector('#sourceItemTemp');
+    const fragment = document.createDocumentFragment();
+    const sourceItemTemp = document.querySelector('#sourceItemTemp');
+    if (!(sourceItemTemp instanceof HTMLTemplateElement)) {
+      throw new Error('');
+    }
     const arr: string[] = [];
     data.forEach((item) => {
       arr.push(item.name.slice(0, 1));
-      const sourceClone = <HTMLElement>sourceItemTemp.content.cloneNode(true);
+      const sourceClone = sourceItemTemp.content.cloneNode(true) as HTMLElement;
 
       sourceClone.querySelector('.source__item-name').textContent = item.name;
       sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
 
       fragment.append(sourceClone);
     });
-    const frag = <DocumentFragment>document.createDocumentFragment();
+    const frag = document.createDocumentFragment();
     const arrayNews = [...new Set(arr)];
     arrayNews.forEach((item) => {
-      const alphabetClone = <HTMLElement>document.createElement('li');
+      const alphabetClone = document.createElement('li');
       alphabetClone.classList.add('alphabet__item');
       alphabetClone.textContent = item;
       frag.append(alphabetClone);
@@ -39,7 +42,7 @@ class Sources {
         });
         dataNew.forEach((item) => {
           arr.push(item.name.slice(0, 1));
-          const sourceClone = <HTMLElement>sourceItemTemp.content.cloneNode(true);
+          const sourceClone = sourceItemTemp.content.cloneNode(true) as HTMLElement;
 
           sourceClone.querySelector('.source__item-name').textContent = item.name;
           sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
