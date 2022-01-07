@@ -15,7 +15,7 @@ class AppController extends AppLoader {
     if (!(e.target instanceof HTMLElement)) {
       throw new Error('Error');
     }
-    let target = e.target;
+    let { target } = e;
     if (!(e.currentTarget instanceof HTMLElement)) {
       throw new Error('Error');
     }

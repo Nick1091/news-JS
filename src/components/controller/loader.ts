@@ -1,5 +1,5 @@
 import { ErrorCode } from './options';
-import { ApiResponse, Callback, Option } from '../types';
+import { ApiResponse, Callback, Option, TLoad } from '../types';
 
 class Loader {
   baseLink: string;
@@ -17,7 +17,7 @@ class Loader {
       console.error('No callback for GET response');
     }
   ) {
-    this.load('GET', endpoint, callback, options);
+    this.load({ method: 'Get', endpoint, callback, options });
   }
 
   errorHandler(res: Response) {
@@ -35,7 +35,7 @@ class Loader {
     let url = `${this.baseLink}${endpoint}?`;
     Object.keys(urlOptions).forEach((key, i) => {
       url += `${key}=${urlOptions[key]}`;
-      if (i == 0) {
+      if (i === 0) {
         url += '&';
       }
     });
@@ -43,7 +43,7 @@ class Loader {
     return url;
   }
 
-  load(method: string, endpoint: string, callback: Callback<ApiResponse>, options: Option) {
+  load({ method, endpoint, callback, options }: TLoad) {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())

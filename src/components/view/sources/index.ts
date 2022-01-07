@@ -2,7 +2,7 @@ import './sources.css';
 import './alphabet.css';
 import { DataSource } from '../../types';
 
-class Sources {
+class SourcesBase {
   draw(data: DataSource[]) {
     const fragment = document.createDocumentFragment();
     const sourceItemTemp = document.querySelector('#sourceItemTemp');
@@ -55,4 +55,4 @@ class Sources {
   }
 }
 
-export default Sources;
+export const Sources = new SourcesBase();

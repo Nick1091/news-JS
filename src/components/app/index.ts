@@ -1,18 +1,18 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import Sources from '../view/sources';
+import { Sources } from '../view/sources';
 
 class App {
   controller: AppController;
 
   view: AppView;
 
-  sources: Sources;
+  sources: typeof Sources;
 
   constructor() {
     this.controller = new AppController();
     this.view = new AppView();
-    this.sources = new Sources();
+    this.sources = Sources;
   }
 
   start() {

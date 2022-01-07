@@ -1,9 +1,9 @@
 import './news.css';
 import { DataNews } from '../../types';
 
-class News {
+class NewsBase {
   draw(data: DataNews[]) {
-    const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+    const news = data.length >= 10 ? data.slice(0, 9) : data;
     const fragment = document.createDocumentFragment();
     const newsItemTemp = document.querySelector('#newsItemTemp');
     if (!(newsItemTemp instanceof HTMLTemplateElement)) {
@@ -46,4 +46,4 @@ class News {
   }
 }
 
-export default News;
+export const News = new NewsBase();

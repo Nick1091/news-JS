@@ -36,3 +36,9 @@ export type Callback<T> = (data: T) => void;
 export type Option = {
   [key: string]: string;
 };
+export type TLoad = {
+  method: string;
+  endpoint: string;
+  callback: Callback<ApiResponse>;
+  options: Option;
+};
