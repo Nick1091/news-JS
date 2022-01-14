@@ -7,13 +7,10 @@ class NewsBase {
     const fragment = document.createDocumentFragment();
     const newsItemTemp = document.querySelector('#newsItemTemp');
     if (!(newsItemTemp instanceof HTMLTemplateElement)) {
-      throw new Error('');
+      throw new Error('newsItemTemp not instanceof HTMLTemplateElement');
     }
     news.forEach((item, idx) => {
-      const newsClone = newsItemTemp.content.cloneNode(true);
-      if (!(newsClone instanceof HTMLElement)) {
-        throw new Error('');
-      }
+      const newsClone = newsItemTemp.content.cloneNode(true) as HTMLElement;
 
       if (idx % 2) newsClone.querySelector('.news__item').classList.add('alt');
 
