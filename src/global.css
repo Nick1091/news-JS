@@ -1,28 +1,37 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    height: 100%;
+}
 body {
     color: #fff;
     background: #17181c;
-    font-family: sans-serif;
+    font: 1rem 'Fira Sans', sans-serif;
+    height: 100%;
 }
-
-header {
-    padding: 10px 30px;
-}
-
-header h1 {
-    font-size: 40px;
+h1 {
+    padding: 0.4em 2em;
+    font-size: 1.8em;
     font-weight: 800;
+    margin: 0;
 }
 
 footer {
-    height: 100px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    align-content:center;
+    gap: 0.8em;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 10px 0;
 }
 footer .copyright {
     font-size: 14px;
     color: #333;
     text-align: center;
+    margin: 0;
 }
 footer .copyright a {
     color: #444;
@@ -30,6 +39,69 @@ footer .copyright a {
 footer .copyright a:hover {
     color: #555;
 }
-footer .copyright:before {
-    content: '©';
+.logo {
+    width: 61px;
+    height: 23px;
+    background-image: url(./assets/rs_school_js.svg);
+}
+.container{
+    max-width: calc(100% - 30px);
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+main{
+    display: flex;
+    max-width: 1024px;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+.sources {
+    align-content: start;
+    flex: 1 0 auto;
+}
+.news{
+    max-width: calc(100% - 30px);
+    margin: 0px auto;
+}
+.alphabet{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3em;
+    font: 300 1.2em 'Fira Sans', sans-serif;
+    padding: 0.5em 0;
+    margin: 0;
+  }
+
+header span{
+    color: rgb(207, 0, 0);
+}
+@media (min-width: 640px) {
+    .container{
+        max-width: calc(100% - 100px);
+    }
+    footer {
+        gap: 3em ;
+        height: 100px ;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    header h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin: 0.2em 0;
+    }
+    header {
+        padding: 0.5em 30px;
+    }
+    .alphabet{
+        gap: 0.5em;
+        padding: 1em 0;
+        font-size: 1.6em;
+    }
 }
