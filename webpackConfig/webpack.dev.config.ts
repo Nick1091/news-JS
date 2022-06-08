@@ -1,11 +1,11 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
-module.exports = {
-  mode: 'production',
+export default {
+  mode: 'development',
   entry: path.resolve(__dirname, '../src/index.ts'),
-  devtool: false,
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -46,4 +46,10 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
   ],
+  devServer: {
+    open: true,
+    hot: true,
+    port: 8080,
+    contentBase: path.join(__dirname, 'public'),
+  },
 };
