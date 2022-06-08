@@ -1,1 +1,4 @@
-# news-JS
+# 🚀 News-Js
+> The news-js application allows you to search and view news
+## Technologies 
+> HTML, CSS, TS, Webpack
